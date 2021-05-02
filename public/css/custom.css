@@ -1,0 +1,51 @@
+/* your styles go here */
+.logo {
+    height: 50px;
+    width: auto;
+}
+
+.ads-overlay {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding: 1rem 0;
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.ads-overlay ul li {
+    transition: all 0.3s;
+}
+
+.ads-overlay ul li:first-of-type {
+    -webkit-transform: translateX(-10px);
+    transform: translateX(-10px);
+    opacity: 0;
+}
+
+.ads-overlay ul li:last-of-type {
+    -webkit-transform: translateX(10px);
+    transform: translateX(10px);
+    opacity: 0;
+}
+
+.ads:hover img {
+    opacity: 0.3;
+}
+  
+.ads:hover .ads-overlay {
+    opacity: 1;
+}
+
+.ads:hover .ads-overlay li {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+}
