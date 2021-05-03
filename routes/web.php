@@ -13,6 +13,5 @@ use App\Http\Controllers\ProductsController;
 |
 */
 
-// Route::view('/{path?}', 'app');
 Route::get('/', [ProductsController::class, 'index']);
 
