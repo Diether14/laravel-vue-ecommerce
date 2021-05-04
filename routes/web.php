@@ -5,6 +5,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +19,9 @@ use App\Http\Controllers\CategoryController;
 */
 
 Route::get('/', [ProductController::class, 'index']);
+Route::get('/products', [ProductController::class, 'showAll']);
+Route::get('/cart', [CartController::class, 'index']);
+Route::get('/checkout', [CheckoutController::class, 'index']);
 
 Route::prefix('products')->group(function() {
     Route::get('get-all', [ProductController::class, 'getAll']);

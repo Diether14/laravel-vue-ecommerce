@@ -10,7 +10,7 @@
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">               
-            <li class="nav-item"><a class="nav-link" href="cart.php"> <i class="fas fa-dolly-flatbed mr-1 text-gray"></i><small class="text-gray">(2)</small></a></li>
+            <li class="nav-item"><a class="nav-link" href="/cart"> <i class="fas fa-dolly-flatbed mr-1 text-gray"></i><small class="text-gray">(2)</small></a></li>
             <li class="nav-item"><a class="nav-link" href="#"> <i class="far fa-heart mr-1"></i><small class="text-gray"> (0)</small></a></li>
             <li class="nav-item"><a class="nav-link" href="#"> <i class="mr-1 text-gray"></i>Login</a></li>
             <li class="nav-item d-none d-md-block"><a class="nav-link disabled" href="#"> <i class="mr-1 text-gray"></i>|</a></li>

@@ -16,7 +16,12 @@ class ProductController extends Controller
 
     public function index()
     {
-        echo view('landing-page.index');
+        echo view('pages.landing.index');
+    }
+
+    public function showAll()
+    {
+        echo view('pages.products.index');
     }
     
     public function getAll() {
