@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,5 +16,20 @@ use App\Http\Controllers\ProductsController;
 |
 */
 
-Route::get('/', [ProductsController::class, 'index']);
+Route::get('/', [ProductController::class, 'index']);
 
+Route::prefix('products')->group(function() {
+    Route::get('get-all', [ProductController::class, 'getAll']);
+});
+
+Route::prefix('partners')->group(function() {
+    Route::get('get-all', [ProductController::class, 'getAll']);
+});
+
+Route::prefix('categories')->group(function() {
+    Route::get('get-all', [CategoryController::class, 'getAll']);
+});
+
+Route::prefix('newsletter')->group(function() {
+    Route::get('get-all', [ProductController::class, 'getAll']);
+});
