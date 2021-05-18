@@ -8,6 +8,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +25,9 @@ Route::get('/', [ProductController::class, 'index']);
 Route::get('/products', [ProductController::class, 'showAll']);
 Route::get('/cart', [CartController::class, 'index']);
 Route::get('/checkout', [CheckoutController::class, 'index']);
+Route::get('/login', [UserController::class, 'index']);
+Route::get('/signup', [UserController::class, 'signup']);
+
 
 Route::prefix('products')->group(function() {
     Route::get('get-all', [ProductController::class, 'getAll']);
