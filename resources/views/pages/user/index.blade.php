@@ -11,14 +11,14 @@
             </div>
             <div class="form-group row">
                 <div class="col-lg-6 form-group">
-                    <label class="text-small text-uppercase" for="firstName2">Email / Phone</label>
-                    <input class="form-control form-control-lg" id="firstName2" type="text" placeholder="Enter your email address / phone number">
+                    <label class="text-small text-uppercase" for="emailOrPhone">Email / Phone</label>
+                    <input class="form-control form-control-lg" id="emailOrPhone" type="text" placeholder="Enter your email address / phone number" autofocus>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-lg-6 form-group">
-                    <label class="text-small text-uppercase" for="firstName2">Password</label>
-                    <input class="form-control form-control-lg" id="firstName2" type="text" placeholder="Enter your password">
+                    <label class="text-small text-uppercase" for="password">Password</label>
+                    <input class="form-control form-control-lg" id="password" type="text" placeholder="Enter your password">
                 </div>
             </div>
             <div class="form-group row">
