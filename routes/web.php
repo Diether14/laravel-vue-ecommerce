@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\StoreOwnerController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -50,4 +51,14 @@ Route::prefix('admin')->group(function() {
     Route::get('/stores', [AdminController::class, 'storesIndex'])->name('admin.stores');
     Route::get('/products', [AdminController::class, 'productsIndex'])->name('admin.products');
     Route::get('/products/create', [AdminController::class, 'productsCreate'])->name('admin.products.create');
+});
+
+Route::prefix('owner')->group(function() {
+    Route::get('/', [StoreOwnerController::class, 'index'])->name('owner.dashboard');
+    Route::get('/new-product', [StoreOwnerController::class, 'showProductCreateForm'])->name('owner.products.showCreateForm');
+    Route::get('/update-product/{id}', [StoreOwnerController::class, 'showProductUpdateForm'])->name('owner.products.showUpdateForm');
+    Route::get('/products', [StoreOwnerController::class, 'productsIndex'])->name('owner.products');
+    Route::post('/products', [StoreOwnerController::class, 'createProduct'])->name('owner.products.create');
+    Route::put('/products', [StoreOwnerController::class, 'updateProduct'])->name('owner.products.update');
+    Route::delete('/products', [StoreOwnerController::class, 'deleteProduct'])->name('owner.products.delete');
 });
