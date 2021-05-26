@@ -7,23 +7,23 @@
     </div>
     <div class="card">
         <div class="card-body p-0">
-            <table class="table">
+            <table class="table" id="owner-product-table">
                 <thead>
                     <tr>
-                        <th style="width: 10px">#</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Stocks</th>
-                        <th>Actions</th>
+                        <th class="th-product-img"></th>
+                        <th class="th-product-name">Name</th>
+                        <th class="th-product-price">Price</th>
+                        <th class="th-product-stocks">Stocks</th>
+                        <th class="th-product-actions">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>1.</td>
-                        <td>Test Product</td>
-                        <td>100</td>
-                        <td>100</td>
-                        <td>
+                        <td class="td-product-img"><img src="{{asset('img/product-1.jpg')}}" alt=""></td>
+                        <td class="td-product-name">Test Product</td>
+                        <td class="td-product-price">100</td>
+                        <td class="td-product-stocks">100</td>
+                        <td class="td-product-actions">
                             <div class="col-md-6">
                                 <button type="button" class="btn btn-primary btn-inline-block btn-flat btn-sm"><i
                                         class="fas fa-eye"></i> View</button>

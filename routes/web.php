@@ -55,10 +55,17 @@ Route::prefix('admin')->group(function() {
 
 Route::prefix('owner')->group(function() {
     Route::get('/', [StoreOwnerController::class, 'index'])->name('owner.dashboard');
+    
     Route::get('/new-product', [StoreOwnerController::class, 'showProductCreateForm'])->name('owner.products.showCreateForm');
     Route::get('/update-product/{id}', [StoreOwnerController::class, 'showProductUpdateForm'])->name('owner.products.showUpdateForm');
+    
     Route::get('/products', [StoreOwnerController::class, 'productsIndex'])->name('owner.products');
     Route::post('/products', [StoreOwnerController::class, 'createProduct'])->name('owner.products.create');
     Route::put('/products', [StoreOwnerController::class, 'updateProduct'])->name('owner.products.update');
     Route::delete('/products', [StoreOwnerController::class, 'deleteProduct'])->name('owner.products.delete');
+
+    Route::get('/transactions', [StoreOwnerController::class, 'transactionsIndex'])->name('owner.transactions');
+    Route::get('/cancellations', [StoreOwnerController::class, 'cancellationsIndex'])->name('owner.cancellations');
+    Route::get('/orders', [StoreOwnerController::class, 'ordersIndex'])->name('owner.orders');
+
 });

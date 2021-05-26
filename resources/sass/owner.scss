@@ -1,0 +1,43 @@
+// Variables
+@import 'variables';
+
+#owner-product-table .th-product-img, #owner-transactions-table .th-transaction-img, #owner-cancellations-table .th-cancellation-img{
+    width: 10%;
+}
+
+#owner-product-table .th-product-name, #owner-transactions-table .th-transaction-customer, #owner-cancellations-table .th-cancellation-customer{
+    width: 20%;
+}
+
+#owner-product-table .th-product-price, #owner-transactions-table .th-transaction-total, #owner-cancellations-table .th-cancellation-total{
+    width: 10%;
+}
+
+#owner-product-table .th-product-stocks, #owner-transactions-table .th-transaction-status, #owner-cancellations-table .th-cancellation-status{
+    width: 10%;
+}
+
+#owner-product-table .th-product-actions, #owner-transactions-table .th-transaction-actions, #owner-cancellations-table .th-cancellation-reason{
+    width: 50%;
+}
+
+#owner-product-table .td-product-img img, #owner-transactions-table .td-transaction-img img, #owner-cancellations-table .td-cancellation-img img{
+    max-width: 100%;
+}
+
+span.trans-stat{
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    border-radius: 50rem !important;
+    white-space: nowrap !important;
+    font-weight: 500;
+}
+
+span.trans-stat.to-pack{
+    background-color: $yellow;
+}
+
+span.trans-stat.cancelled{
+    background-color: $red;
+    color: white;
+}

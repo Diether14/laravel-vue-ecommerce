@@ -46,6 +46,78 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tags"></i>
+              <p>
+                Promos
+                <i class="fas fa-angle-left right"></i>
+                {{-- <span class="badge badge-info right">6</span> --}}
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('owner.products') }}" class="nav-link">
+                  <i class="fas fa-list nav-icon"></i>
+                  <p>All Promos</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-exchange-alt"></i>
+              <p>
+                Transactions
+                <i class="fas fa-angle-left right"></i>
+                {{-- <span class="badge badge-info right">6</span> --}}
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('owner.transactions') }}" class="nav-link">
+                  <i class="fas fa-list nav-icon"></i>
+                  <p>All Transactions</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('owner.orders') }}" class="nav-link">
+                  <i class="fas fa-box nav-icon"></i>
+                  <p>Orders</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('owner.cancellations') }}" class="nav-link">
+                  <i class="fas fa-ban nav-icon"></i>
+                  <p>Cancellations</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-dollar-sign"></i>
+              <p>
+                Sales
+                <i class="fas fa-angle-left right"></i>
+                {{-- <span class="badge badge-info right">6</span> --}}
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('owner.products') }}" class="nav-link">
+                  <i class="fas fa-list nav-icon"></i>
+                  <p>All Sales</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('owner.products') }}" class="nav-link">
+                  <i class="fas fa-print nav-icon"></i>
+                  <p>Reports</p>
+                </a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

@@ -15,3 +15,4 @@ mix.copy('node_modules/bootstrap/dist/js/bootstrap.min.js', 'public/js/bootstrap
 mix.copy('node_modules/jquery/dist/jquery.min.js', 'public/js/jquery.min.js');
 mix.copy('node_modules/jquery/dist/jquery.min.js', 'public/js/jquery.min.js');
 mix.copy('resources/js/theme.js', 'public/js/theme.js')
+mix.sass('resources/sass/owner.scss', 'public/css');
