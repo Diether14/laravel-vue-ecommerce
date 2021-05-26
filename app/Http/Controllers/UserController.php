@@ -21,4 +21,9 @@ class UserController extends Controller
     {
         echo view('pages.user.signup');
     }
+
+    public function account()
+    {
+        echo view('pages.user.account');
+    }
 }

@@ -28,23 +28,33 @@ Route::get('/cart', [CartController::class, 'index']);
 Route::get('/checkout', [CheckoutController::class, 'index']);
 Route::get('/login', [UserController::class, 'index']);
 Route::get('/signup', [UserController::class, 'signup']);
+Route::get('/account', [UserController::class, 'account']);
+
 
 
 Route::prefix('products')->group(function() {
     Route::get('get-all', [ProductController::class, 'getAll']);
 });
 
+
+
 Route::prefix('partners')->group(function() {
     Route::get('get-all', [ProductController::class, 'getAll']);
 });
+
+
 
 Route::prefix('categories')->group(function() {
     Route::get('get-all', [CategoryController::class, 'getAll']);
 });
 
+
+
 Route::prefix('newsletter')->group(function() {
     Route::get('get-all', [ProductController::class, 'getAll']);
 });
+
+
 
 Route::prefix('admin')->group(function() {
     Route::get('/', [AdminController::class, 'admin'])->name('admin.dashboard');
@@ -52,6 +62,8 @@ Route::prefix('admin')->group(function() {
     Route::get('/products', [AdminController::class, 'productsIndex'])->name('admin.products');
     Route::get('/products/create', [AdminController::class, 'productsCreate'])->name('admin.products.create');
 });
+
+
 
 Route::prefix('owner')->group(function() {
     Route::get('/', [StoreOwnerController::class, 'index'])->name('owner.dashboard');
