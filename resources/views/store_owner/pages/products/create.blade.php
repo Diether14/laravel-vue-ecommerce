@@ -1,5 +1,10 @@
 @extends('store_owner.layout.app')
 
+{{-- begin:: style used by this page --}}
+<link rel="stylesheet" href="/library/dropzone/basic.min.css">
+<link rel="stylesheet" href="/library/dropzone/dropzone.min.css">
+{{-- end:: style used by this page --}}
+
 @section('content')
 <div class="card">
     <!-- form start -->
@@ -21,6 +26,9 @@
             <label for="productStocks">Stocks</label>
             <input type="number" name="stocks" class="form-control" id="productStocks" placeholder="Enter stocks">
         </div>
+        <div class="form-group">
+          <div id="productImage"></div>
+        </div>
       </div>
       <!-- /.card-body -->
       <div class="card-footer">
@@ -28,4 +36,17 @@
       </div>
     </form>
   </div>
+
 @endsection
+
+{{-- begin:: script used by this page --}}
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/library/dropzone/dropzone.min.js"></script>
+<script src="/library/dropzone/dropzone-amd-module.min.js"></script>
+{{-- end:: script used by this page --}}
+
+<script>
+  $(document).ready(() => {
+    $('productImage').dropzone({ url: "/file/post" });
+  });
+</script>
