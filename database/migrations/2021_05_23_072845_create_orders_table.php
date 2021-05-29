@@ -19,6 +19,7 @@ class CreateOrdersTable extends Migration
             $table->integer('payment_method')->comment('1=gcash, 2=cod');
             $table->integer('status')->comment('1= paid, 2=unpaid');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

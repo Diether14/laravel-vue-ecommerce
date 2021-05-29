@@ -19,6 +19,7 @@ class CreateProductPhotosTable extends Migration
             $table->integer('type');
             $table->string('photo', 100);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

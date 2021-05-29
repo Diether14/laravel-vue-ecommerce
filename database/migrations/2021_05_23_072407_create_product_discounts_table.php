@@ -21,6 +21,7 @@ class CreateProductDiscountsTable extends Migration
             $table->integer('discount_type')->comment('1=percentage=value');
             $table->integer('discount_value');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

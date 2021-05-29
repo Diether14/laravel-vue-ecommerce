@@ -20,6 +20,7 @@ class CreatePartnersTable extends Migration
             $table->string('img', 100);
             $table->longText('link');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

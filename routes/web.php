@@ -22,13 +22,13 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', [ProductController::class, 'index']);
-Route::get('/products', [ProductController::class, 'showAll']);
-Route::get('/cart', [CartController::class, 'index']);
-Route::get('/checkout', [CheckoutController::class, 'index']);
-Route::get('/login', [UserController::class, 'index']);
-Route::get('/signup', [UserController::class, 'signup']);
-Route::get('/account', [UserController::class, 'account']);
+// Route::get('/', [ProductController::class, 'index']);
+// Route::get('/products', [ProductController::class, 'showAll']);
+// Route::get('/cart', [CartController::class, 'index']);
+// Route::get('/checkout', [CheckoutController::class, 'index']);
+// Route::get('/login', [UserController::class, 'index']);
+// Route::get('/signup', [UserController::class, 'signup']);
+// Route::get('/account', [UserController::class, 'account']);
 
 
 
@@ -63,18 +63,23 @@ Route::prefix('admin')->group(function() {
     Route::get('/products/create', [AdminController::class, 'productsCreate'])->name('admin.products.create');
 });
 
-
-
 Route::prefix('owner')->group(function() {
     Route::get('/', [StoreOwnerController::class, 'index'])->name('owner.dashboard');
-    
-    Route::get('/new-product', [StoreOwnerController::class, 'showProductCreateForm'])->name('owner.products.showCreateForm');
-    Route::get('/update-product/{id}', [StoreOwnerController::class, 'showProductUpdateForm'])->name('owner.products.showUpdateForm');
-    
-    Route::get('/products', [StoreOwnerController::class, 'productsIndex'])->name('owner.products');
-    Route::post('/products', [StoreOwnerController::class, 'createProduct'])->name('owner.products.create');
-    Route::put('/products', [StoreOwnerController::class, 'updateProduct'])->name('owner.products.update');
-    Route::delete('/products', [StoreOwnerController::class, 'deleteProduct'])->name('owner.products.delete');
+
+    Route::prefix('products')->group(function() {
+        Route::get('/', [StoreOwnerController::class, 'productsIndex'])->name('owner.products');
+        Route::get('/create', [StoreOwnerController::class, 'showProductCreateForm'])->name('owner.products.create');
+        Route::get('/update/{id}', [StoreOwnerController::class, 'showProductUpdateForm'])->name('owner.products.showUpdateForm');
+    });
+
+    Route::prefix('api')->group(function() {
+        Route::prefix('products')->group(function() {
+            Route::post('', [ProductController::class, 'create']);
+            Route::get('/', [ProductController::class, 'getAll']);
+            Route::put('/{id}', [ProductController::class, 'update']);
+            Route::delete('/{id}', [ProductController::class, 'destroy']);
+        });
+    });
 
     Route::get('/transactions', [StoreOwnerController::class, 'transactionsIndex'])->name('owner.transactions');
     Route::get('/cancellations', [StoreOwnerController::class, 'cancellationsIndex'])->name('owner.cancellations');

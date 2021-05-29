@@ -19,6 +19,7 @@ class CreateOrderStatusTable extends Migration
             $table->integer('status')->comment('1=to pack, 2=shipped, 3=otw, 4=delivered, 5=cancelled, 6=rejected');
             $table->string('remarks', 255)->comment('cancellation reason/rejection reason');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

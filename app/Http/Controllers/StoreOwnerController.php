@@ -35,7 +35,7 @@ class StoreOwnerController extends Controller
             $this->breadcrumbItems['dashboard'],
             $this->breadcrumbItems['products_index']
         ];
-        $this->pageData['pageTitle'] = 'Products'; 
+        $this->pageData['pageTitle'] = 'Products';
         return view('store_owner.pages.products.index', $this->pageData);
     }
 
@@ -45,7 +45,7 @@ class StoreOwnerController extends Controller
             $this->breadcrumbItems['products_index'],
             $this->breadcrumbItems['products_create'],
         ];
-        $this->pageData['pageTitle'] = 'New Product'; 
+        $this->pageData['pageTitle'] = 'New Product';
         return view('store_owner.pages.products.create', $this->pageData);
     }
 
@@ -55,7 +55,7 @@ class StoreOwnerController extends Controller
             $this->breadcrumbItems['products_index'],
             $this->breadcrumbItems['products_update'],
         ];
-        $this->pageData['pageTitle'] = 'New Product'; 
+        $this->pageData['pageTitle'] = 'New Product';
         return view('store_owner.pages.products.update', $this->pageData);
     }
 
@@ -64,7 +64,7 @@ class StoreOwnerController extends Controller
             $this->breadcrumbItems['dashboard'],
             $this->breadcrumbItems['transactions_index']
         ];
-        $this->pageData['pageTitle'] = 'Transactions'; 
+        $this->pageData['pageTitle'] = 'Transactions';
         return view('store_owner.pages.transactions.index', $this->pageData);
     }
 
@@ -73,7 +73,7 @@ class StoreOwnerController extends Controller
             $this->breadcrumbItems['dashboard'],
             $this->breadcrumbItems['cancellations_index']
         ];
-        $this->pageData['pageTitle'] = 'Cancellations'; 
+        $this->pageData['pageTitle'] = 'Cancellations';
         return view('store_owner.pages.transactions.cancellations', $this->pageData);
     }
 
@@ -82,7 +82,8 @@ class StoreOwnerController extends Controller
             $this->breadcrumbItems['dashboard'],
             $this->breadcrumbItems['orders_index']
         ];
-        $this->pageData['pageTitle'] = 'Orders'; 
+        $this->pageData['pageTitle'] = 'Orders';
         return view('store_owner.pages.transactions.orders', $this->pageData);
     }
+
 }

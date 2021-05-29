@@ -8,7 +8,7 @@ class Repository
 {
     /**
      * Model to be used by the repository.
-     * 
+     *
      * @var Model;
      */
     protected $model;
@@ -16,7 +16,7 @@ class Repository
 
     /**
      * Initiate repository class
-     * 
+     *
      * @param Model $model
      */
     public function __construct(Model $model)
@@ -47,15 +47,22 @@ class Repository
 
     /**
      * Get a collection of the model
-     * 
+     *
      * @param array $args array of arguments to be applied to the query
      * @return array $arr array response data
      */
     public function getAll(Array $args = [])
     {
         try {
-            $collection = $this->model::all();
-            
+            $collection = $this->model;
+
+            if(isset($args['assoc']))
+            {
+                $collection = $collection->with($args['assoc']);
+            }
+
+            $collection = $collection->get();
+
             if(isset($args['group']))
             {
                 $collection = $collection->groupBy($args['group']);
@@ -79,7 +86,7 @@ class Repository
 
     /**
      * Create a new instance of model
-     * 
+     *
      * @param array $args array of values to be supplied to the new model
      * @return array $arr array response data
      */
@@ -99,7 +106,7 @@ class Repository
             DB::rollback();
             $arr = [
                 'code'      => 500,
-                'message'   => 'error creating resource',
+                'message'   => $e->getMessage(),
                 'err'       => $e,
             ];
         }
@@ -109,7 +116,7 @@ class Repository
 
     /**
      * Update existing instance of model
-     * 
+     *
      * @param integer $id id of resource to be updated
      * @param array $args array of values to be supplied to the new model
      * @return array $arr array response data
@@ -132,6 +139,36 @@ class Repository
                 'code'      => 500,
                 'message'   => 'error updating resource',
                 'err'       => $e,
+            ];
+        }
+
+        return $arr;
+    }
+
+    /**
+     * Destroy existing instance of model
+     *
+     * @param integer $id id of resource to be updated
+     * @return array $arr array response data
+     */
+    public function destroy($id)
+    {
+        DB::beginTransaction();
+        try {
+            $res = $this->model::findOrFail($id);
+            $res = $res->delete();
+            $arr = [
+                'code'      => 200,
+                'message'   => 'Resource deleted successfuly.',
+                'data'      => $res
+            ];
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            $arr = [
+                'code'      => 500,
+                'message'   => 'error deleting resource',
+                'err'       => $e->getMessage(),
             ];
         }
 

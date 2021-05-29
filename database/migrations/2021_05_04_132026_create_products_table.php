@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->integer('price');
             $table->integer('stocks');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

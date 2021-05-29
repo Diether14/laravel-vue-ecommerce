@@ -17,6 +17,7 @@ class CreateSalesTable extends Migration
             $table->id();
             $table->integer('order_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

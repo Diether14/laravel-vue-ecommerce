@@ -20,6 +20,7 @@ class CreateDiscountsTable extends Migration
             $table->dateTime('open_datetime', $precision = 0);
             $table->dateTime('close_datetime', $precision = 0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

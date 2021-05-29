@@ -18,6 +18,7 @@ class CreateNewsletterTable extends Migration
             $table->string('title', 100);
             $table->longText('content');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

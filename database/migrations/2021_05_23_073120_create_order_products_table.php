@@ -21,6 +21,7 @@ class CreateOrderProductsTable extends Migration
             $table->integer('product_discount_id');
             $table->integer('product_actual_price');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
