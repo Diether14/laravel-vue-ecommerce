@@ -33,7 +33,7 @@
         </div>
         <div class="form-group">
           <label for="productStocks">Image</label>
-          <input type="file" name="image" class="form-control" id="productImage" placeholder="Upload image" multiple required>
+          <input type="file" name="image[]" class="form-control" id="productImage" multiple placeholder="Upload image">
         </div>
       </div>
       <!-- /.card-body -->
@@ -54,7 +54,7 @@
           formData.append('description', $('#productDescription').val());
           formData.append('price', $('#productPrice').val());
           formData.append('stocks',  $('#productStocks').val());
-          formData.append('product_images', $('#productImage')[0].files[0]);        
+          formData.append('product_images[]', $('#productImage')[0].files[0]);        
           e.preventDefault();
   
           $.ajax({
