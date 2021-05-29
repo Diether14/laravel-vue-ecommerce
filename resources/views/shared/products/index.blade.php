@@ -14,16 +14,16 @@
 </div>
 
 <script>
-  const Product = {
-    addToCart: () => {
-      alert('added to cart');
-    },
-    addToWishList: () => {
-      alert('added to wishlist');
-    }
-  };
-
   $(document).ready(() => {
+    const Product = {
+      addToCart: () => {
+        alert('added to cart');
+      },
+      addToWishList: () => {
+        alert('added to wishlist');
+      }
+    };
+
     $(document).on('click','.add-to-cart', () => Product.addToCart());
     $(document).on('click','.add-to-wishlist', () => Product.addToWishList());
   });

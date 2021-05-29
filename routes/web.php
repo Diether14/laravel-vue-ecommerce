@@ -53,6 +53,7 @@ Route::prefix('categories')->group(function() {
 
 Route::prefix('newsletter')->group(function() {
     Route::get('get-all', [ProductController::class, 'getAll']);
+    Route::post('subscribe', [NewsletterController::class, 'subscribe']);
 });
 
 
