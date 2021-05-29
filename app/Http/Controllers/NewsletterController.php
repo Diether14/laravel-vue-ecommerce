@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Interfaces\NewsletterInterface;
+use App\Repositories\NewsletterRepository;
 
 class NewsletterController extends Controller
 {
     private $repo;
     
-    public function __construct(NewsletterInterface $repo)
+    public function __construct(NewsletterRepository $repo)
     {
         $this->repo = $repo;
     }
@@ -23,6 +24,8 @@ class NewsletterController extends Controller
     public function subscribe(Request $request) 
     {
         $email = htmlspecialchars($request->input('email'));
+        return $this->repo->subscribe($email);
+
         $to = $email;
         $subject = "Subscribe to our newsletter";
 
@@ -65,6 +68,5 @@ class NewsletterController extends Controller
         $headers .= 'From: newsletter@thegoodmobph.co' . "\r\n";
 
         mail($to, $subject, $message, $headers);
-        // return $this->repo->subscribe($email);
     }
 }

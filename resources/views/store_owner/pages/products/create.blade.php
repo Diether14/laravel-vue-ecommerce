@@ -2,40 +2,38 @@
 
 {{-- begin:: style used by this page --}}
 {{-- <link rel="stylesheet" href="/library/dropzone/basic.css"> --}}
-<link rel="stylesheet" href="/library/dropzone/dropzone.css">
+{{-- <link rel="stylesheet" href="/library/dropzone/dropzone.css"> --}}
 {{-- end:: style used by this page --}}
 {{-- begin:: script used by this page --}}
 {{-- <script src="/vendor/jquery/jquery.min.js"></script> --}}
-<script src="/library/dropzone/dropzone.js"></script>
+{{-- <script src="/library/dropzone/dropzone.js"></script> --}}
 {{-- end:: script used by this page --}}
 
 @section('content')
 <div class="card">
     <!-- form start -->
-    <form id="quickForm">
+    {{-- enctype="multipart/form-data" --}}
+    <form id="quickForm" method="POST">
       <div class="card-body">
         <div class="form-group">
           <label for="productName">Name</label>
-          <input type="text" name="name" class="form-control" id="productName" placeholder="Enter name">
+          <input type="text" name="name" class="form-control" id="productName" placeholder="Enter name" required>
         </div>
         <div class="form-group">
             <label for="productDescription">Description</label>
-            <textarea name="description" class="form-control" id="productDescription" placeholder="Enter description"></textarea>
+            <textarea name="description" class="form-control" id="productDescription" placeholder="Enter description" required></textarea>
         </div>
         <div class="form-group">
             <label for="productPrice">Price</label>
-            <input type="number" name="price" class="form-control" id="productPrice" placeholder="Enter price">
+            <input type="number" name="price" class="form-control" id="productPrice" placeholder="Enter price" required>
         </div>
         <div class="form-group">
             <label for="productStocks">Stocks</label>
-            <input type="number" name="stocks" class="form-control" id="productStocks" placeholder="Enter stocks">
+            <input type="number" name="stocks" class="form-control" id="productStocks" placeholder="Enter stocks" required>
         </div>
         <div class="form-group">
-          <form action="/file-upload" class="dropzone">
-            <div class="fallback">
-              <input name="file" type="file" multiple />
-            </div>
-          </form>
+          <label for="productStocks">Image</label>
+          <input type="file" name="image" class="form-control" id="productImage" placeholder="Upload image" multiple required>
         </div>
       </div>
       <!-- /.card-body -->
@@ -45,19 +43,34 @@
     </form>
   </div>
 
-@endsection
-
-<script>
-  $(document).ready(() => {
-    Dropzone.options.myAwesomeDropzone = {
-      paramName: "file", // The name that will be used to transfer the file
-      maxFilesize: 2, // MB
-      accept: function(file, done) {
-        if (file.name == "justinbieber.jpg") {
-          done("Naha, you don't.");
+  <script src="/vendor/jquery/jquery.min.js"></script>
+  <script>
+    $(document).ready(() => {
+      const Owner = {
+        create: (e) => {
+          var formData = new FormData();
+          formData.append('_token', '{{ csrf_token() }}');
+          formData.append('name', $('#productName').val());
+          formData.append('description', $('#productDescription').val());
+          formData.append('price', $('#productPrice').val());
+          formData.append('stocks',  $('#productStocks').val());
+          formData.append('product_images', $('#productImage')[0].files[0]);        
+          e.preventDefault();
+  
+          $.ajax({
+            url: '/owner/api/products',
+            method: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: (res) => {
+              console.log(res);
+            }
+          });
         }
-        else { done(); }
-      }
-    };
-  });
-</script>
+      };
+  
+      $(document).on('submit', '#quickForm', (e) => Owner.create(e));
+    });
+  </script>
+@endsection

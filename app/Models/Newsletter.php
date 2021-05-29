@@ -11,6 +11,7 @@ class Newsletter extends Model
 
     public function subscribe($email) 
     {
+        return $email;
         $to = "cerico.renzmartin@gmail.com";
         $subject = "Subscribe to our newsletter";
 
