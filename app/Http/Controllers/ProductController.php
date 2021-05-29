@@ -24,7 +24,7 @@ class ProductController extends Controller
 
     public function update($id, UpdateProductRequest $request) {
         $validated = $request->validated();
-        $res = $this->repo->update($validated);
+        $res = $this->repo->update($id, $validated);
         return response(json_encode($res), $res['code']);
     }
 

@@ -2,13 +2,14 @@
 
 {{-- begin:: style used by this page --}}
 {{-- <link rel="stylesheet" href="/library/dropzone/basic.css"> --}}
-<link rel="stylesheet" href="/library/dropzone/dropzone.css">
 {{-- end:: style used by this page --}}
 {{-- begin:: script used by this page --}}
 {{-- <script src="/vendor/jquery/jquery.min.js"></script> --}}
-<script src="/library/dropzone/dropzone.js"></script>
 {{-- end:: script used by this page --}}
+@section('styles')
+<link rel="stylesheet" href="/library/dropzone/dropzone.css">
 
+@endsection
 @section('content')
 <div class="card">
     <!-- form start -->
@@ -47,8 +48,10 @@
 
 @endsection
 
+@section('scripts')
+<script src="/library/dropzone/dropzone.js"></script>
 <script>
-  $(document).ready(() => {
+jQuery(() => {
     Dropzone.options.myAwesomeDropzone = {
       paramName: "file", // The name that will be used to transfer the file
       maxFilesize: 2, // MB
@@ -61,3 +64,4 @@
     };
   });
 </script>
+@endsection

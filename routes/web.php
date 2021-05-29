@@ -68,6 +68,11 @@ Route::prefix('admin')->group(function() {
 Route::prefix('owner')->group(function() {
     Route::get('/', [StoreOwnerController::class, 'index'])->name('owner.dashboard');
 
+    Route::prefix('auth')->group(function() {
+        Route::get('/register', [StoreOwnerController::class, 'register'])->name('owner.register');
+        Route::get('/login', [StoreOwnerController::class, 'showLoginForm'])->name('owner.login');
+    });
+
     Route::prefix('products')->group(function() {
         Route::get('/', [StoreOwnerController::class, 'productsIndex'])->name('owner.products');
         Route::get('/create', [StoreOwnerController::class, 'showProductCreateForm'])->name('owner.products.create');
