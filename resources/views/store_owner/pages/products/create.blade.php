@@ -8,7 +8,10 @@
 {{-- <script src="/vendor/jquery/jquery.min.js"></script> --}}
 {{-- <script src="/library/dropzone/dropzone.js"></script> --}}
 {{-- end:: script used by this page --}}
+@section('styles')
+<link rel="stylesheet" href="/library/dropzone/dropzone.css">
 
+@endsection
 @section('content')
 <div class="card">
     <!-- form start -->
@@ -33,7 +36,7 @@
         </div>
         <div class="form-group">
           <label for="productStocks">Image</label>
-          <input type="file" name="image[]" class="form-control" id="productImage" multiple placeholder="Upload image">
+          <input type="file" name="image[]" class="form-control" id="productImage" multiple placeholder="Upload image" required>
         </div>
       </div>
       <!-- /.card-body -->
@@ -54,9 +57,9 @@
           formData.append('description', $('#productDescription').val());
           formData.append('price', $('#productPrice').val());
           formData.append('stocks',  $('#productStocks').val());
-          formData.append('product_images[]', $('#productImage')[0].files[0]);        
+          formData.append('product_images', $('#productImage')[0].files[0]);    
           e.preventDefault();
-  
+
           $.ajax({
             url: '/owner/api/products',
             method: 'POST',
@@ -69,7 +72,7 @@
           });
         }
       };
-  
+
       $(document).on('submit', '#quickForm', (e) => Owner.create(e));
     });
   </script>

@@ -86,4 +86,16 @@ class StoreOwnerController extends Controller
         return view('store_owner.pages.transactions.orders', $this->pageData);
     }
 
+    public function register() {
+        return view('store_owner.auth.register');
+    }
+
+    public function showLoginForm() {
+        return view('store_owner.auth.login');
+    }
+
+    public function login(Request $req) {
+
+    }
+
 }
