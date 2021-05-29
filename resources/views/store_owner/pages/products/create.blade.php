@@ -41,7 +41,7 @@
       </div>
       <!-- /.card-body -->
       <div class="card-footer">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button id="submitBtn" type="button" class="btn btn-primary">Submit</button>
       </div>
     </form>
   </div>
@@ -53,12 +53,18 @@
         create: (e) => {
           var formData = new FormData();
           formData.append('_token', '{{ csrf_token() }}');
+          formData.append('_method', 'POST');
           formData.append('name', $('#productName').val());
           formData.append('description', $('#productDescription').val());
           formData.append('price', $('#productPrice').val());
           formData.append('stocks',  $('#productStocks').val());
-          formData.append('product_images', $('#productImage')[0].files[0]);    
-          e.preventDefault();
+          var ins = document.getElementById('productImage').files.length;
+            for (var x = 0; x < ins; x++) {
+                image = document.getElementById('productImage').files[x],
+                type =   x == 0 ? 1 : 2,
+                formData.append(`product_images[${x}][type]`, type);
+                formData.append(`product_images[${x}][image]`, image);
+            }
 
           $.ajax({
             url: '/owner/api/products',
@@ -73,7 +79,7 @@
         }
       };
 
-      $(document).on('submit', '#quickForm', (e) => Owner.create(e));
+      $(document).on('click', '#submitBtn', (e) => Owner.create(e));
     });
   </script>
 @endsection

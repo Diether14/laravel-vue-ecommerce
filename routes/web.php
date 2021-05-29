@@ -22,6 +22,7 @@ use App\Http\Controllers\UserController;
 |
 */
 
+Route::post('new-product', [ProductController::class, 'create']);
 Route::get('/', [ProductController::class, 'index']);
 Route::get('/products', [ProductController::class, 'showAll']);
 Route::get('/product/detail', [ProductController::class, 'showProductDetails']);
@@ -81,7 +82,7 @@ Route::prefix('owner')->group(function() {
 
     Route::prefix('api')->group(function() {
         Route::prefix('products')->group(function() {
-            Route::post('', [ProductController::class, 'create']);
+            Route::post('/', [ProductController::class, 'create']);
             Route::get('/', [ProductController::class, 'getAll']);
             Route::put('/{id}', [ProductController::class, 'update']);
             Route::delete('/{id}', [ProductController::class, 'destroy']);
