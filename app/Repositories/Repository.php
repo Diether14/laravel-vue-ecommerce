@@ -24,11 +24,17 @@ class Repository
         $this->model = $model;
     }
 
-    public function getByID($id)
+    public function getByID($id, Array $args = [])
     {
         try {
-            $user = $this->model->find($id);
+            $user = $this->model->where('id', $id);
 
+            if(isset($args['assoc']))
+            {
+                $user = $user->with($args['assoc']);
+            }
+
+            $user = $user->get();
             $arr = [
                 'code'      => 200,
                 'message'   => 'Successfuly model record.',

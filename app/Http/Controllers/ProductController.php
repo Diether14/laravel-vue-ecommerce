@@ -38,6 +38,11 @@ class ProductController extends Controller
         return response(json_encode($res), $res['code']);
     }
 
+    public function getByID($id) {
+        $res = $this->repo->getByID($id, ['assoc' => ['productPhotos']]);
+        return response(json_encode($res), $res['code']);
+    }
+
     public function destroy($id) {
         $res = $this->repo->destroy($id);
         return response(json_encode($res), $res['code']);

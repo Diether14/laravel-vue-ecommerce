@@ -84,6 +84,7 @@ Route::prefix('owner')->group(function() {
         Route::prefix('products')->group(function() {
             Route::post('/', [ProductController::class, 'create']);
             Route::get('/', [ProductController::class, 'getAll']);
+            Route::get('/{id}', [ProductController::class, 'getByID']);
             Route::put('/{id}', [ProductController::class, 'update']);
             Route::delete('/{id}', [ProductController::class, 'destroy']);
         });
