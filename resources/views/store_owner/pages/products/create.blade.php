@@ -36,7 +36,7 @@
         </div>
         <div class="form-group">
           <label for="productStocks">Image</label>
-          <input type="file" name="image" class="form-control" id="productImage" placeholder="Upload image" multiple required>
+          <input type="file" name="image[]" class="form-control" id="productImage" multiple placeholder="Upload image" required>
         </div>
       </div>
       <!-- /.card-body -->
