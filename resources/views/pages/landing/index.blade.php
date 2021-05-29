@@ -1,3 +1,7 @@
+{{-- begin:: style used by this page --}}
+{{-- <link rel="stylesheet" href="/library/dropzone/dropzone.css"> --}}
+{{-- end:: style used by this page --}}
+
 @extends('app')
 @section('content')
 @include('common.header')
@@ -29,8 +33,39 @@
         @include('shared.partners.index')
 
         <hr>
-        <!-- NEWSLETTER-->
+        {{-- Newsletter --}}
         @include('shared.newsletter.index')
+
+        {{-- Carousel Modal --}}
+        @include('shared.modal.carousel')
+
+        {{-- <form action="/file-upload" class="dropzone">
+          <div class="fallback">
+            <input name="file" type="file" multiple />
+          </div>
+        </form> --}}
   </div>
 @include('common.footer')
+
+<script>
+  $(document).ready(() => {
+    // Dropzone.options.myAwesomeDropzone = {
+    //   paramName: "file",
+    //   maxFilesize: 2,
+    //   accept: function(file, done) {
+    //     if (file.name == "justinbieber.jpg") {
+    //       done("Naha, you don't.");
+    //     }
+    //     else { done(); }
+    //   }
+    // };
+    
+    $('#adsModal').modal('show');
+  });
+</script>
+
 @endsection
+
+{{-- begin:: script used by this page --}}
+{{-- <script src="/library/dropzone/dropzone.js"></script> --}}
+{{-- end:: script used by this page --}}

@@ -113,14 +113,14 @@
                                 <label class="text-small text-uppercase" for="referenceNum">Payment</label>
                                 <select class="selectpicker" id="paymentMethod" data-width="fit" data-style="form-control form-control-lg" data-title="Payment Method">
                                     <option value="cod">Cash on delivery</option>
-                                    <option value="cod">GCash</option>
+                                    <option value="gcash">GCash</option>
                                 </select>
                             </div>
-                            <div class="col-lg-6 form-group">
+                            <div class="col-lg-6 form-group proof-of-payment d-none">
                                 <label class="text-small text-uppercase" for="referenceNum">Reference Number</label>
                                 <input class="form-control form-control-lg" id="referenceNum" type="text" placeholder="Enter reference number">
                             </div>
-                            <div class="col-lg-6 form-group">
+                            <div class="col-lg-6 form-group proof-of-payment d-none">
                                 <label class="text-small text-uppercase" for="referenceNum">Proof of Payment</label>
                                 <input class="form-control form-control-lg" id="referenceNum" type="file" placeholder="">
                             </div>
@@ -151,3 +151,19 @@
         </div>
     </section>
 </div>
+
+<script>
+    const Payment = {
+        handlePaymentMethod: () => {
+            const payment = $('#paymentMethod').val();
+
+            if (payment === 'gcash') {
+                $('.proof-of-payment').removeClass('d-none');  
+            } else {
+                $('.proof-of-payment').addClass('d-none');
+            }
+        }
+    };
+
+    $(document).on('change', '#paymentMethod', () => Payment.handlePaymentMethod());
+</script>

@@ -22,13 +22,14 @@ use App\Http\Controllers\UserController;
 |
 */
 
-// Route::get('/', [ProductController::class, 'index']);
-// Route::get('/products', [ProductController::class, 'showAll']);
-// Route::get('/cart', [CartController::class, 'index']);
-// Route::get('/checkout', [CheckoutController::class, 'index']);
-// Route::get('/login', [UserController::class, 'index']);
-// Route::get('/signup', [UserController::class, 'signup']);
-// Route::get('/account', [UserController::class, 'account']);
+Route::get('/', [ProductController::class, 'index']);
+Route::get('/products', [ProductController::class, 'showAll']);
+Route::get('/product/detail', [ProductController::class, 'showProductDetails']);
+Route::get('/cart', [CartController::class, 'index']);
+Route::get('/checkout', [CheckoutController::class, 'index']);
+Route::get('/login', [UserController::class, 'index']);
+Route::get('/signup', [UserController::class, 'signup']);
+Route::get('/account', [UserController::class, 'account']);
 
 
 
@@ -52,6 +53,7 @@ Route::prefix('categories')->group(function() {
 
 Route::prefix('newsletter')->group(function() {
     Route::get('get-all', [ProductController::class, 'getAll']);
+    Route::post('subscribe', [NewsletterController::class, 'subscribe']);
 });
 
 

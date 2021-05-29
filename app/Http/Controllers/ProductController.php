@@ -28,6 +28,11 @@ class ProductController extends Controller
         return response(json_encode($res), $res['code']);
     }
 
+    public function showProductDetails()
+    {
+        echo view('pages.products.details');
+    }
+
     public function getAll() {
         $res = $this->repo->getAll(['assoc' => ['productPhotos']]);
         return response(json_encode($res), $res['code']);
