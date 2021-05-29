@@ -46,4 +46,38 @@
 
 @section('scripts')
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script>
+    $(document).ready(() => {
+      const Product = {
+        update: (e) => {
+            const url_string = window.location.href
+            const url = new URL(url_string);
+            const urlSplit = url.pathname.split('/');
+            const id = urlSplit[4];
+            e.preventDefault();
+
+            const data = {
+                '_token': '{{ csrf_token() }}',
+                '_method': 'POST',
+                'name': $('#productName').val(),
+                'description': $('#productDescription').val(),
+                'price': $('#productPrice').val(),
+                'stocks':  $('#productStocks').val()
+            };
+
+            $.ajax({
+                url: '/owner/api/products/'+id,
+                method: 'PUT',
+                data: data,
+                success: (res) => {
+                    // console.log(res);
+                    window.location.href = '/owner/products';
+                }
+            });
+        }
+      };
+
+      $(document).on('submit', '#quickForm', (e) => Product.update(e));
+    });
+  </script>
 @endsection
