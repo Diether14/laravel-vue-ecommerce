@@ -67,7 +67,7 @@
             }
 
           $.ajax({
-            url: '/new-product',
+            url: '/owner/api/products',
             method: 'POST',
             data: formData,
             contentType: false,
