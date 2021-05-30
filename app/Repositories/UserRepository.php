@@ -55,4 +55,61 @@ class UserRepository extends Repository implements UserInterface{
         return $arr;
     }
 
+    public function register(Array $req, $roles = ['3']){
+        DB::beginTransaction();
+        try {
+            $user = User::create([
+                'name'              => $req['name'],
+                'email'             => $req['email'],
+                'password'          => Hash::make($req['password']),
+            ]);
+
+            $rolesSuccess = $this->flushRoles($user, $roles);
+            if($rolesSuccess['code'] == 500) {
+                throw new \Exception($rolesSuccess['e']);
+            }
+
+            $arr = [
+                'code'      => 201,
+                'message'   => 'User registered',
+                'user'      => $user
+            ];
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            $arr = [
+                'code'      => 500,
+                'message'   => 'Error registering user',
+                'e'         => $e->getMessage()
+            ];
+        }
+
+        return $arr;
+    }
+
+    public function flushRoles(User $user, Array $roles) {
+        DB::beginTransaction();
+        try {
+            foreach ($roles as $i => $role) {
+                $user->roles()->attach($role, ['model_type' => 'App\Models\User']);
+            }
+
+            $arr = [
+                'code'      => 201,
+                'message'   => 'roles flushed',
+            ];
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            $arr = [
+                'code'      => 500,
+                'message'   => 'Error flushing roles',
+                'e'         => $e->getMessage()
+            ];
+        }
+
+        return $arr;
+
+    }
+
 }
