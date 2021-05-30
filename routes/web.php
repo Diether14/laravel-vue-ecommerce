@@ -27,7 +27,7 @@ Route::get('/', function(){
     return view('pages.landing.index');
 });
 Route::get('/products', [ProductController::class, 'showAll']);
-Route::get('/product/detail', [ProductController::class, 'showProductDetails']);
+Route::get('/product-details', [ProductController::class, 'showProductDetails']);
 Route::get('/cart', [CartController::class, 'index']);
 Route::get('/checkout', [CheckoutController::class, 'index']);
 Route::get('/login', [UserController::class, 'index']);

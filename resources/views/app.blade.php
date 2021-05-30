@@ -44,7 +44,7 @@
    <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-   <link rel="stylesheet" href="/library/dropzone/basic.min.css">
+   {{-- <link rel="stylesheet" href="/library/dropzone/basic.min.css">
    <link rel="stylesheet" href="/library/dropzone/dropzone.min.css">
    <script src="/library/dropzone/dropzone.min.js"></script>
    <script src="/library/dropzone/dropzone-amd-module.min.js"></script>
@@ -52,6 +52,6 @@
    <link rel="stylesheet" href="/library/dropzone/basic.css">
    <link rel="stylesheet" href="/library/dropzone/dropzone.css">
    <script src="/library/dropzone/dropzone.js"></script>
-   <script src="/library/dropzone/dropzone-amd-module.js"></script>
+   <script src="/library/dropzone/dropzone-amd-module.js"></script> --}}
 </body>
 </html>

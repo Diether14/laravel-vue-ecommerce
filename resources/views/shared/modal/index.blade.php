@@ -28,8 +28,8 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-sm-5 pl-sm-0"><a class="btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0" href="cart.php">Add to cart</a></div>
-                </div><a class="btn btn-link text-dark p-0" href="#"><i class="far fa-heart mr-2"></i>Add to wish list</a>
+                  <div class="col-sm-5 pl-sm-0"><a class="btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0" href="javascript:void(0);">Add to cart</a></div>
+                </div><a class="btn btn-link text-dark p-0" href="javascript:void(0);"><i class="far fa-heart mr-2"></i>Add to wish list</a>
               </div>
             </div>
           </div>

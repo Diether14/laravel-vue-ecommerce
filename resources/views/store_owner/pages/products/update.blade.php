@@ -7,7 +7,7 @@
       <div class="card-body">
         <div class="form-group">
           <label for="productName">Name</label>
-          <input type="text" name="name" class="form-control" id="productName" value="Test Product" placeholder="Enter name">
+          <input type="text" name="name" class="form-control" id="productName" value="" placeholder="Enter name">
         </div>
         <div class="form-group">
           <label>Categories</label>
@@ -24,11 +24,11 @@
         </div>
         <div class="form-group">
             <label for="productPrice">Price</label>
-            <input type="number" name="price" class="form-control" id="productPrice" value="100" placeholder="Enter price">
+            <input type="number" name="price" class="form-control" id="productPrice" value="" placeholder="Enter price">
         </div>
         <div class="form-group">
             <label for="productStocks">Stocks</label>
-            <input type="number" name="stocks" class="form-control" id="productStocks" value="100" placeholder="Enter stocks">
+            <input type="number" name="stocks" class="form-control" id="productStocks" value="" placeholder="Enter stocks">
         </div>
       </div>
       <!-- /.card-body -->
@@ -46,4 +46,63 @@
 
 @section('scripts')
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script>
+    $(document).ready(() => {
+      const Product = {
+        get: () => {
+          return new Promise((resolve, reject) => {
+            const url_string = window.location.href
+            const url = new URL(url_string);
+            const urlSplit = url.pathname.split('/');
+            const id = urlSplit[4];
+
+              $.ajax({
+                  url: '/owner/api/products/' + id,
+                  method: 'GET',
+                  success: (res) => {
+                      resolve(res);
+                  }
+              });
+          });
+        },
+        update: (e) => {
+            const url_string = window.location.href
+            const url = new URL(url_string);
+            const urlSplit = url.pathname.split('/');
+            const id = urlSplit[4];
+            e.preventDefault();
+
+            const data = {
+                '_token': '{{ csrf_token() }}',
+                '_method': 'POST',
+                'name': $('#productName').val(),
+                'description': $('#productDescription').val(),
+                'price': $('#productPrice').val(),
+                'stocks':  $('#productStocks').val()
+            };
+
+            $.ajax({
+                url: '/owner/api/products/'+id,
+                method: 'PUT',
+                data: data,
+                success: (res) => {
+                    // console.log(res);
+                    window.location.href = '/owner/products';
+                }
+            });
+        },
+        show: async () => {
+          const product = JSON.parse(await Product.get());
+          console.log(product);
+          $('#productName').val(product.data[0].name);
+          $('#productDescription').val(product.data[0].description);
+          $('#productPrice').val(product.data[0].price);
+          $('#productStocks').val(product.data[0].stocks);
+        }
+      };
+
+      Product.show();
+      $(document).on('submit', '#quickForm', (e) => Product.update(e));
+    });
+  </script>
 @endsection

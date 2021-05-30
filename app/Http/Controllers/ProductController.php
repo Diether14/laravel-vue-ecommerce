@@ -16,6 +16,14 @@ class ProductController extends Controller
         $this->repo = $repo;
     }
 
+    public function index() {
+        return view('pages.landing.index');
+    }
+
+    public function showAll() {
+        return view('pages.products.index');
+    }
+
     public function create(CreateProductRequest $request) {
         $validated = $request->validated();
         $res = $this->repo->create($validated);

@@ -1,6 +1,6 @@
 <header class="header bg-white sticky-top shadow-sm">
     <div class="bg-dark p-1 d-flex justify-content-center">
-      <span class="badge badge-primary" style="font-size: 68%;">Flash sale on February 14!</span>
+      <span class="badge badge-primary" style="font-size: 68%;">Flash sale on June 18!</span>
     </div>
     <div class="container px-0 px-lg-3">
       <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0">
