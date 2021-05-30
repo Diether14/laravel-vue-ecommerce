@@ -18,12 +18,12 @@
               <p class="small text-muted small text-uppercase mb-1">Made the hard way</p>
               <h2 class="h5 text-uppercase mb-4">Top trending products</h2>
             </header>
-            <div class="row">
-              @for ($i = 0; $i < 8; $i++)
+            <div class="row products-container">
+              {{-- @for ($i = 0; $i < 8; $i++)
                 <div class="col-xl-3 col-lg-4 col-sm-6">
                     @include('shared.products.index')
                 </div>
-              @endfor
+              @endfor --}}
             </div>
         </section>
         {{-- end:: Products --}}
@@ -59,6 +59,47 @@
     //     else { done(); }
     //   }
     // };
+    const Product = {
+        get: () => {
+            return new Promise((resolve, reject) => {
+                $.ajax({
+                    url: '/owner/api/products',
+                    method: 'GET',
+                    success: (res) => {
+                        resolve(res);
+                    }
+                });
+            });
+        },
+        showAll: async () => {
+            const product = JSON.parse(await Product.get());
+            
+            if (product.data.length > 0) {
+                for (let i = 0; i < product.data.length; i++) {
+                    const template = Product.template(product.data[i]);
+                    $('.products-container').append(`<div class="col-xl-3 col-lg-4 col-sm-6">${template}</div>`);
+                }
+            }
+        },
+        template: (product) => {
+            return `<div class="product text-center">
+                        <div class="position-relative mb-3">
+                            <div class="badge text-white badge-"></div><a class="d-block" href="/product/detail"><img class="img-fluid w-100" src="/storage/${product.product_photos[0].photo}" style="height: 200px; object-fit: cover;" alt="..."></a>
+                            <div class="product-overlay">
+                            <ul class="mb-0 list-inline">
+                                <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark add-to-wishlist" href="#" data-id="${product.product_photos[0].id}"><i class="far fa-heart"></i></a></li>
+                                <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark add-to-cart" href="#" data-id="${product.product_photos[0].id}">Add to cart</a></li>
+                                <li class="list-inline-item mr-0"><a class="btn btn-sm btn-outline-dark" href="#productView" data-toggle="modal" data-id="${product.product_photos[0].id}"><i class="fas fa-expand"></i></a></li>
+                            </ul>
+                            </div>
+                        </div>
+                        <h6> <a class="reset-anchor" href="/product/detail">${product.name}</a></h6>
+                        <p class="small text-muted">₱ ${product.price}</p>
+                    </div>`;
+        }
+    };
+
+    Product.showAll();
     
     $('#adsModal').modal('show');
   });

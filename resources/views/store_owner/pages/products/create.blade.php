@@ -74,6 +74,7 @@
             processData: false,
             success: (res) => {
               console.log(res);
+              window.location.href = '/owner/products';
             }
           });
         }

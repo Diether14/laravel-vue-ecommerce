@@ -1,7 +1,7 @@
 @extends('store_owner.layout.app')
 
 @section('content')
-    <div class="w-100 text-right container pt-1 mb-2">
+    <div class="w-100 text-right container-fluid pt-1 mb-2">
         <a href="{{ route('owner.products.create') }}" type="button" class="btn btn-success btn-flat"><i
                 class="fas fa-plus"></i> Create</a>
     </div>
@@ -85,9 +85,9 @@
                 if (product.data.length > 0) {
                     for (let i = 0; i < product.data.length; i++) {
                         const data = `<tr>
-                                        <td class="td-product-img"><img src="/storage/${product.data[i].product_photos[0].photo}" alt=""></td>
-                                        <td class="td-product-name">${product.data[i].name}</td>
-                                        <td class="td-product-price">PHP ${product.data[i].price}</td>
+                                        <td class="td-product-img"><img src="/storage/${product.data[i].product_photos[0].photo}" style="height: 100px; width: 100px; object-fit: cover;" alt=""></td>
+                                        <td class="td-product-name font-weight-bold">${product.data[i].name}</td>
+                                        <td class="td-product-price font-weight-bold">PHP ${product.data[i].price}</td>
                                         <td class="td-product-stocks">${product.data[i].stocks}</td>
                                         <td class="td-product-actions">
                                             <div class="col-md-6">
