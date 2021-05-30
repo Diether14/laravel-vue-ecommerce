@@ -22,10 +22,10 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::post('new-product', [ProductController::class, 'create']);
+// Route::post('new-product', [ProductController::class, 'create']);
 Route::get('/', [ProductController::class, 'index']);
 Route::get('/products', [ProductController::class, 'showAll']);
-Route::get('/product/detail', [ProductController::class, 'showProductDetails']);
+Route::get('/product-details', [ProductController::class, 'showProductDetails']);
 Route::get('/cart', [CartController::class, 'index']);
 Route::get('/checkout', [CheckoutController::class, 'index']);
 Route::get('/login', [UserController::class, 'index']);
