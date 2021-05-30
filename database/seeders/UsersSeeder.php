@@ -4,7 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\Store;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Str;
 
 class UsersSeeder extends Seeder
 {
@@ -47,5 +49,11 @@ class UsersSeeder extends Seeder
         $adminUser->assignRole($adminRole);
         $ownerUser->assignRole($ownerRole);
         $customer->assignRole($customerRole);
+
+        $ownerUser->stores()->create([
+            'name' => 'test store',
+            'picture'   => 'test.jpg'
+        ]);
+
     }
 }

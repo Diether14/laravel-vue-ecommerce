@@ -11,6 +11,8 @@ use App\Interfaces\PartnerInterface;
 use App\Repositories\PartnerRepository;
 use App\Interfaces\NewsletterInterface;
 use App\Repositories\NewsletterRepository;
+use App\Interfaces\UserInterface;
+use App\Repositories\UserRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -22,21 +24,25 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register(){
         $this->app->bind(
-            ProductInterface::class, 
+            ProductInterface::class,
             ProductRepository::class
         );
         $this->app->bind(
-            CategoryInterface::class, 
+            CategoryInterface::class,
             CategoryRepository::class
         );
         $this->app->bind(
-           PartnerInterface::class, 
+           PartnerInterface::class,
            PartnerRepository::class
         );
         $this->app->bind(
-            NewsletterInterface::class, 
+            NewsletterInterface::class,
             NewsletterRepository::class
          );
+        $this->app->bind(
+        UserInterface::class,
+        UserRepository::class
+        );
     }
 
 }
