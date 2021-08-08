@@ -50,6 +50,51 @@ class UserController extends Controller
         }
     }
 
+    public function checkoutEmail() {
+        $to = 'sisonkryshan@gmail.com';
+        $subject = "The Good Mob - Order";
+
+        $message = "
+        <html>
+        <head>
+            <title>The Good Mob - Order</title>
+        </head>
+        <body>
+            <table style='width: 100%;'>
+            <thead>
+                <tr>
+                    <th style='padding: 50px; background: #3d3c3c; color: white;'>
+                        <h1>Customer Order</h1>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style='padding: 100px;'>
+                        <h1>You've received an order.</h1>
+                        <br />
+                        <br />
+                        <a href='www.thegoodmobph.co/owner/transactions' target='_blank' style='background: #fa9e05; color: white; padding: 20px 40px;'>Check order</a>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th style='padding: 50px; background: #3d3c3c; color: white;'>&copy; 2021. The Good Mob PH.</th>
+                </tr>
+            </tfoot>
+            </table>
+        </body>
+        </html>";
+
+        // Always set content-type when sending HTML email
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        $headers .= 'From: orders@thegoodmobph.co' . "\r\n";
+
+        mail($to, $subject, $message, $headers);
+    }
+    
     public function signup(Request $request) {
         $validated = $request->validate([
             'name'      => 'required',

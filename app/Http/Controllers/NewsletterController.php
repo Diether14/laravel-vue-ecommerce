@@ -24,7 +24,7 @@ class NewsletterController extends Controller
     public function subscribe(Request $request) 
     {
         $email = htmlspecialchars($request->input('email'));
-        return $this->repo->subscribe($email);
+        // return $this->repo->subscribe($email);
 
         $to = $email;
         $subject = "Subscribe to our newsletter";

@@ -4,7 +4,7 @@
         <h2 class="h5 text-uppercase mb-4">Billing details</h2>
         <div class="row">
             <div class="col-lg-8">
-                <form action="#">
+                <form method="POST" id="checkoutForm">
                 <div class="row">
                     {{-- start:: Billing --}}
                     <div class="col-lg-6 form-group">
@@ -162,8 +162,25 @@
             } else {
                 $('.proof-of-payment').addClass('d-none');
             }
+        },
+        handleCheckoutEmail: (e) => {   
+            $.ajax({
+                url: '/checkout-email',
+                method: 'POST',
+                data: { 
+                    "_token": "{{ csrf_token() }}",
+                    "_method": "POST"
+                },
+                success: (res) => {
+                    alert('Your order is in process.');
+                }
+            });
+
+            e.preventDefault();   
         }
     };
 
     $(document).on('change', '#paymentMethod', () => Payment.handlePaymentMethod());
+    $(document).on('submit', '#checkoutForm', (e) => Payment.handleCheckoutEmail(e));
+
 </script>

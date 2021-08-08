@@ -36,6 +36,8 @@ Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 Route::get('/signup', [UserController::class, 'showSignUpPage']);
 Route::post('/signup', [UserController::class, 'signup'])->name('signup');
 Route::get('/account', [UserController::class, 'account']);
+Route::post('/checkout-email', [UserController::class, 'checkoutEmail']);
+
 
 
 

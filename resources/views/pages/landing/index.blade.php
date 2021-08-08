@@ -9,6 +9,53 @@
       {{-- modal --}}
       @include('shared.modal.index')
       <div class="container">
+        
+        {{-- begin::carousel --}}
+        <style>
+          .carousel-inner {
+              /* max-height: 500px!important; */
+          }
+          </style>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="d-block w-100" src="/img/ads1.png" alt="First slide">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="/img/ads2.png" alt="Second slide">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="/img/ads3.png" alt="Third slide">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="/img/ads4.png" alt="Fourth slide">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="/img/ads5.png" alt="Fifth slide">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="/img/ads6.png" alt="Fifth slide">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="/img/ads7.png" alt="Fifth slide">
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+        {{-- end::carousel --}}
+
         {{-- Categories --}}
         @include('shared.categories.index')
       
@@ -37,7 +84,7 @@
         @include('shared.newsletter.index')
 
         {{-- Carousel Modal --}}
-        @include('shared.modal.carousel')
+        {{-- @include('shared.modal.carousel') --}}
 
         {{-- <form action="/file-upload" class="dropzone">
           <div class="fallback">
@@ -60,6 +107,23 @@
     //   }
     // };
     const Product = {
+        addToCart: (e) => {
+          const item = localStorage.getItem('productCart');
+          const id = $(e.currentTarget).attr('data-id');
+
+          if (item === null) {
+            const productArr = []
+            productArr.push(id);
+            localStorage.setItem('productCart', productArr);
+            console.log(localStorage.getItem('productCart'));
+          } else {
+            
+          }
+
+          console.log(item);
+          // alert('added to cart');
+          e.preventDefault();
+        },
         get: () => {
             return new Promise((resolve, reject) => {
                 $.ajax({
@@ -87,8 +151,8 @@
                             <div class="badge text-white badge-"></div><a class="d-block" href="product-details"><img class="img-fluid w-100" src="/storage/${product.product_photos[0].photo}" style="height: 200px; object-fit: cover;" alt="..."></a>
                             <div class="product-overlay">
                             <ul class="mb-0 list-inline">
-                                <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark add-to-wishlist" href="#" data-id="${product.product_photos[0].id}"><i class="far fa-heart"></i></a></li>
-                                <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark add-to-cart" href="#" data-id="${product.product_photos[0].id}">Add to cart</a></li>
+                                <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark add-to-wishlist" href="javascript:void(0);" data-id="${product.product_photos[0].id}"><i class="far fa-heart"></i></a></li>
+                                <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark add-to-cart" href="javascript:void(0);" data-id="${product.product_photos[0].id}">Add to cart</a></li>
                                 <li class="list-inline-item mr-0"><a class="btn btn-sm btn-outline-dark" href="#productView" data-toggle="modal" data-id="${product.product_photos[0].id}"><i class="fas fa-expand"></i></a></li>
                             </ul>
                             </div>
@@ -101,7 +165,8 @@
 
     Product.showAll();
     
-    $('#adsModal').modal('show');
+    // $('#adsModal').modal('show');
+    $(document).on('click', '.add-to-cart', (e) => Product.addToCart(e));
   });
 </script>
 
