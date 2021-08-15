@@ -20,7 +20,7 @@
             <div class="form-group row">
                 <div class="col-lg-6 form-group">
                     <label class="text-small text-uppercase" for="password">Password</label>
-                    <input class="form-control form-control-lg" name="password" id="password" type="text" placeholder="Enter your password">
+                    <input class="form-control form-control-lg" name="password" id="password" type="password" placeholder="Enter your password">
                 </div>
             </div>
             <div class="form-group row">
