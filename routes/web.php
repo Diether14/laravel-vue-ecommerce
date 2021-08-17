@@ -10,6 +10,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StoreOwnerController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PolicyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +38,8 @@ Route::get('/signup', [UserController::class, 'showSignUpPage']);
 Route::post('/signup', [UserController::class, 'signup'])->name('signup');
 Route::get('/account', [UserController::class, 'account']);
 Route::post('/checkout-email', [UserController::class, 'checkoutEmail']);
-
+Route::get('/terms-and-conditions', [PolicyController::class, 'index']);
+Route::get('/backup', [PolicyController::class, 'backup']);
 
 
 

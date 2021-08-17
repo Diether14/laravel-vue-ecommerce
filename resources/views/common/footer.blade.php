@@ -7,7 +7,7 @@
             <li><a class="footer-link" href="#">Help &amp; Contact Us</a></li>
             <li><a class="footer-link" href="#">Returns &amp; Refunds</a></li>
             <li><a class="footer-link" href="#">Online Stores</a></li>
-            <li><a class="footer-link" href="#">Terms &amp; Conditions</a></li>
+            <li><a class="footer-link" href="/terms-and-conditions">Terms &amp; Conditions</a></li>
           </ul>
         </div>
         <div class="col-md-4 mb-3 mb-md-0">
